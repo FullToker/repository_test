@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from urllib.error import HTTPError
 import re
+import random
+import datetime
 
 def getHtml(url):
     try:
@@ -38,3 +40,16 @@ for link in bs0bj.find("div",{"id":"bodyContent"}).findAll("a",href=re.compile("
     # print(link)
     if 'href' in link.attrs:
         print(link.attrs['href'])
+
+random.seed(datetime.datetime.now())
+def getlinks(articleUrl):
+    html=getHtml(articleUrl)
+    bs0bj=BeautifulSoup(html)
+    links= bs0bj.find("div",{"id":"bodyContent"}).findAll("a",
+                                                          href=re.compile("^(/wiki/)((?!:).)*$"))
+    return links
+
+links=getlinks("http://en.wikipedia.org/wiki/Kevin_Bacon")
+while len(links)>0:
+    newArticle = links[random.randint(0, len(links)-1)].attrs["href"]
+    print(newArticle)
