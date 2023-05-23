@@ -25,3 +25,5 @@ def f(n):
 print(f(f(9)),f(f(12)))
 print("tz""")
 print("桃子"*3)
+
+print(all([]),all([[]]))
