@@ -36,3 +36,4 @@ test()
 print("ello world")
 print("day day up")
 n=[23,34,98]
+print(n)
