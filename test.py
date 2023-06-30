@@ -27,3 +27,9 @@ print("tz""")
 print("桃子"*3)
 
 print(all([]),all([[]]))
+
+number=8
+def test():
+    print(number)
+
+test()
